@@ -1,0 +1,136 @@
+{
+  "stocks": [
+    {
+      "id": 1,
+      "companyName": "Advanced Micro Devices",
+      "symbol": "AMD"
+    },
+    {
+      "id": 2,
+      "companyName": "NVIDIA",
+      "symbol": "NVDA"
+    },
+    {
+      "id": 3,
+      "companyName": "Apple",
+      "symbol": "AAPL"
+    },
+    {
+      "id": 4,
+      "companyName": "Alphabet",
+      "symbol": "GOOG"
+    },
+    {
+      "id": 5,
+      "companyName": "Carnival",
+      "symbol": "CCL"
+    },
+    {
+      "id": 6,
+      "companyName": "Delta Air Lines",
+      "symbol": "DLA"
+    },
+    {
+      "id": 7,
+      "companyName": "Hilton Worldwide Holdings",
+      "symbol": "HLT"
+    },
+    {
+      "id": 8,
+      "companyName": "Callaway Golf Company",
+      "symbol": "ELY"
+    },
+    {
+      "id": 9,
+      "companyName": "Ford Motor Company",
+      "symbol": "F"
+    },
+    {
+      "id": 10,
+      "companyName": "Bank of America",
+      "symbol": "BAC"
+    }
+  ],
+  "tenDay": [
+    {
+      "date": "May 1, 2022",
+      "open": 7.804003,
+      "high": 7.80568,
+      "low": 7.80399,
+      "close": 7.805248,
+      "volume": 444
+    },
+    {
+      "date": "May 2, 2022",
+      "open": 7.804003,
+      "high": 7.80568,
+      "low": 7.80399,
+      "close": 7.805248,
+      "volume": 444
+    },
+    {
+      "date": "May 3, 2022",
+      "open": 7.804003,
+      "high": 7.80568,
+      "low": 7.80399,
+      "close": 7.805248,
+      "volume": 444
+    },
+    {
+      "date": "May 4, 2022",
+      "open": 7.804003,
+      "high": 7.80568,
+      "low": 7.80399,
+      "close": 7.805248,
+      "volume": 444
+    },
+    {
+      "date": "May 5, 2022",
+      "open": 7.804003,
+      "high": 7.80568,
+      "low": 7.80399,
+      "close": 7.805248,
+      "volume": 444
+    },
+    {
+      "date": "May 6, 2022",
+      "open": 7.804003,
+      "high": 7.80568,
+      "low": 7.80399,
+      "close": 7.805248,
+      "volume": 444
+    },
+    {
+      "date": "May 7, 2022",
+      "open": 7.804003,
+      "high": 7.80568,
+      "low": 7.80399,
+      "close": 7.805248,
+      "volume": 444
+    },
+    {
+      "date": "May 8, 2022",
+      "open": 7.804003,
+      "high": 7.80568,
+      "low": 7.80399,
+      "close": 7.805248,
+      "volume": 444
+    },
+    {
+      "date": "May 9, 2022",
+      "open": 7.804003,
+      "high": 7.80568,
+      "low": 7.80399,
+      "close": 7.805248,
+      "volume": 444
+    },
+    {
+      "date": "May 10, 2022",
+      "open": 7.804003,
+      "high": 7.80568,
+      "low": 7.80399,
+      "close": 7.805248,
+      "volume": 444
+    }
+  ]
+}
