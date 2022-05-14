@@ -6,12 +6,13 @@ import type { RootState } from './Redux/store';
 import Dashboard from './Containers/Dashboard/Dashboard';
 import Login from './Containers/Login/Login';
 import Navigation from './Components/Navigation';
+import Details from './Containers/Dashboard/Details';
 
 const Layout = () => {
   return (
     <>
       <Navigation />
-      <Container component='main' maxWidth={false}>
+      <Container component='main' style={{ padding: 0 }}>
         <Outlet />
       </Container>
     </>
@@ -38,7 +39,7 @@ const App = () => {
             <Route path="" element={<Dashboard />} />
             <Route path="/">
               <Route path="dashboard" element={<Dashboard />} />
-              {/* <Route path="details" element={<Details />} /> */}
+              <Route path="details" element={<Details />} />
             </Route>
           </Route>
         </Route>

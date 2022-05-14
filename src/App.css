@@ -39,4 +39,22 @@
 
 .content {
   margin-top: 64px;
+  padding: 0;
 }
+
+.detail-header {
+  height: 30vh;
+  background-color: #282c34;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .detail-head-content {
+  position: relative;
+  float: left;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */

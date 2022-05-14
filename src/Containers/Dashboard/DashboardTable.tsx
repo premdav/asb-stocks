@@ -8,6 +8,7 @@ import { Stock } from '../../Types/AppTypes';
 import { Favorite, FavoriteBorder } from '@mui/icons-material';
 import { stockInfoActions } from '../../Redux/slices/stockInfoSlice';
 import { useDialogContext } from '../../Components/Dialogs/dialogContext';
+import { useNavigate } from 'react-router-dom';
 
 const tableHeaders = [
   {
@@ -28,6 +29,7 @@ const tableHeaders = [
 const DashboardTable = ({ stocks, favoriteStocks }: { stocks: Stock[], favoriteStocks: Stock[] }) => {
   const dispatch = useAppDispatch();
   const { openDialog } = useDialogContext();
+  const navigate = useNavigate();
   console.log('stocks', stocks);
   console.log('favs', favoriteStocks);
   return (
@@ -76,7 +78,8 @@ const DashboardTable = ({ stocks, favoriteStocks }: { stocks: Stock[], favoriteS
                   <TableCell>{stock.companyName}</TableCell>
                   <TableCell>
                     <Button onClick={() => {
-                      console.log('details', stock)
+                      dispatch(stockInfoActions.setDetailStock(stock));
+                      navigate('/details')
                     }}>View Details</Button>
                   </TableCell>
                 </TableRow>
