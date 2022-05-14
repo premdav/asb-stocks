@@ -1,27 +1,40 @@
-import React, { useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import { useAppDispatch } from '../../Redux/hooks';
-import { authSliceActions } from '../../Redux/slices/authSlice';
+import React, { useEffect, useState } from 'react';
+import {
+  Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
+} from '@mui/material';
+import DashboardTable from './DashboardTable';
+import { useAppDispatch, useAppSelector } from '../../Redux/hooks';
+import { useGetStocksQuery } from '../../Redux/api';
+
+const tableHeaders = [
+  {
+    field: 'actions', headerName: 'Actions', flex: 1,
+  },
+  {
+    field: 'symbol', headerName: 'Symbol', flex: 3,
+  },
+  {
+    field: 'companyName', headerName: 'Company Name', flex: 3,
+  },
+  {
+    field: 'details', headerName: 'Details', flex: 2,
+  }
+];
 
 
 const Dashboard = () => {
+  const { data: stocks } = useGetStocksQuery();
+  const { favorites } = useAppSelector((store) => store.stockInfo);
   const dispatch = useAppDispatch();
+  const [favStocks, setFaveStocks] = useState([]);
 
-  return (
-      <Box className='content'>
-        Dashboard
-      </Box>
+  return (<>
+  {
+    stocks && favorites !== undefined && <>
+      <DashboardTable stocks={stocks} favoriteStocks={favorites} />
+    </>
+  }
+  </>
   );
 };
 

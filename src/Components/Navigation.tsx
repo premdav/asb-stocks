@@ -9,6 +9,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { useAppDispatch, useAppSelector } from '../Redux/hooks';
 import { authSliceActions } from '../Redux/slices/authSlice';
 import { useNavigate } from 'react-router-dom';
+import { stockInfoActions } from '../Redux/slices/stockInfoSlice';
 
 const Navigation = () => {
   const { username } = useAppSelector((store) => store.auth);
@@ -29,6 +30,7 @@ const Navigation = () => {
           onClick={() => {
             dispatch(authSliceActions.setIsLoggedIn(false));
             dispatch(authSliceActions.setUsername(''));
+            dispatch(stockInfoActions.setDetailStock(null));
             navigate('/')
           }}
           >Logout</Button>

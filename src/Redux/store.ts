@@ -9,7 +9,7 @@ import rootReducer from './reducers';
 const persistConfig = {
   key: 'root', 
   storage: storageSession,
-  whitelist: ['auth'], // ONLY auth will be persisted
+  whitelist: ['auth', 'stockInfo'], // auth and stockInfo will be persisted
 };
 
 export const setupStore: any = (preloadedState?: PreloadedState<RootState>) => {
