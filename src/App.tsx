@@ -1,7 +1,9 @@
 import React from 'react';
 import { Routes, Route, Navigate, useLocation, Outlet } from 'react-router-dom';
+import { CssBaseline } from '@mui/material';
 import { useAppSelector } from './Redux/hooks';
 import type { RootState } from './Redux/store';
+import Login from './Containers/Login';
 
 
 const RequireAuth = () => {
@@ -12,11 +14,6 @@ const RequireAuth = () => {
   return <Outlet />;
 };
 
-const Login = () => {
-  return (
-    <div>LOGIN PAGE</div>
-  );
-};
 
 const Dashboard = () => {
   return (
@@ -27,6 +24,7 @@ const Dashboard = () => {
 const App = () => {
   return (
     <div className="App">
+      <CssBaseline />
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route element={<RequireAuth />}>
