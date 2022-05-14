@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import {store} from './Redux/store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import DialogProvider from './Components/Dialogs/DialogProvider';
 import './App.css';
 
 const persistor = persistStore(store);
@@ -18,7 +19,9 @@ root.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
+          <DialogProvider>
           <App />
+          </DialogProvider>
         </BrowserRouter>
       </PersistGate>
     </Provider>

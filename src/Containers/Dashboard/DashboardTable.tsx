@@ -7,6 +7,7 @@ import { useAppDispatch } from '../../Redux/hooks';
 import { Stock } from '../../Types/AppTypes';
 import { Favorite, FavoriteBorder } from '@mui/icons-material';
 import { stockInfoActions } from '../../Redux/slices/stockInfoSlice';
+import { useDialogContext } from '../../Components/Dialogs/dialogContext';
 
 const tableHeaders = [
   {
@@ -26,6 +27,7 @@ const tableHeaders = [
 
 const DashboardTable = ({ stocks, favoriteStocks }: { stocks: Stock[], favoriteStocks: Stock[] }) => {
   const dispatch = useAppDispatch();
+  const { openDialog } = useDialogContext();
   console.log('stocks', stocks);
   console.log('favs', favoriteStocks);
   return (
@@ -49,7 +51,10 @@ const DashboardTable = ({ stocks, favoriteStocks }: { stocks: Stock[], favoriteS
               favoriteStocks.map((stock) => (
                 <TableRow key={stock.id} hover>
                   <TableCell>
-                    <Favorite color='primary' onClick={() => dispatch(stockInfoActions.removeFavorite(stock))} />
+                    <Favorite color='primary' onClick={() => {
+                      dispatch(stockInfoActions.setDetailStock(stock));
+                      openDialog('unfavorite');
+                      }} />
                   </TableCell>
                   <TableCell>{stock.symbol}</TableCell>
                   <TableCell>{stock.companyName}</TableCell>

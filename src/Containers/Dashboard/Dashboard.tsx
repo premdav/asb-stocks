@@ -5,6 +5,8 @@ import {
 import DashboardTable from './DashboardTable';
 import { useAppDispatch, useAppSelector } from '../../Redux/hooks';
 import { useGetStocksQuery } from '../../Redux/api';
+import UnfavoriteDialog from '../../Components/Dialogs/UnfavoriteDialog';
+import { useDialogContext } from '../../Components/Dialogs/dialogContext';
 
 const tableHeaders = [
   {
@@ -23,6 +25,7 @@ const tableHeaders = [
 
 
 const Dashboard = () => {
+  const { dialogType } = useDialogContext();
   const { data: stocks } = useGetStocksQuery();
   const { favorites } = useAppSelector((store) => store.stockInfo);
   const dispatch = useAppDispatch();
@@ -33,6 +36,10 @@ const Dashboard = () => {
     stocks && favorites !== undefined && <>
       <DashboardTable stocks={stocks} favoriteStocks={favorites} />
     </>
+  }
+  {
+    dialogType === 'unfavorite' ?
+    <UnfavoriteDialog open={dialogType === 'unfavorite'} /> : null
   }
   </>
   );
