@@ -1,24 +1,44 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, Navigate, useLocation, Outlet } from 'react-router-dom';
+import { useAppSelector } from './Redux/hooks';
+import type { RootState } from './Redux/store';
 
-function App() {
+
+const RequireAuth = () => {
+  const { isLoggedIn } = useAppSelector((state: RootState) => state.auth);
+  const location = useLocation();
+  
+  if (!isLoggedIn) return <Navigate to="/login" state={{ from: location }} replace />;
+  return <Outlet />;
+};
+
+const Login = () => {
+  return (
+    <div>LOGIN PAGE</div>
+  );
+};
+
+const Dashboard = () => {
+  return (
+    <div>dashboard</div>
+  );
+};
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route element={<RequireAuth />}>
+          {/* <Route element={<Layout />}> */}
+            <Route path="" element={<Dashboard />} />
+            <Route path="/">
+              <Route path="dashboard" element={<Dashboard />} />
+              {/* <Route path="details" element={<Details />} /> */}
+            </Route>
+        </Route>
+        <Route path="*" element={<>Nothing here yet!</>} />
+      </Routes>
     </div>
   );
 }
