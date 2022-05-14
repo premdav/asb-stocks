@@ -11,8 +11,8 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import { useAppDispatch } from '../Redux/hooks';
-import { authSliceActions } from '../Redux/slices/authSlice';
+import { useAppDispatch } from '../../Redux/hooks';
+import { authSliceActions } from '../../Redux/slices/authSlice';
 
 interface LoginData {
   username: string,

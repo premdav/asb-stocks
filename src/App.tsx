@@ -1,9 +1,22 @@
 import React from 'react';
 import { Routes, Route, Navigate, useLocation, Outlet } from 'react-router-dom';
-import { CssBaseline } from '@mui/material';
+import { Container, CssBaseline } from '@mui/material';
 import { useAppSelector } from './Redux/hooks';
 import type { RootState } from './Redux/store';
-import Login from './Containers/Login';
+import Dashboard from './Containers/Dashboard/Dashboard';
+import Login from './Containers/Login/Login';
+import Navigation from './Components/Navigation';
+
+const Layout = () => {
+  return (
+    <>
+      <Navigation />
+      <Container component='main' maxWidth={false}>
+        <Outlet />
+      </Container>
+    </>
+  );
+};
 
 
 const RequireAuth = () => {
@@ -14,13 +27,6 @@ const RequireAuth = () => {
   return <Outlet />;
 };
 
-
-const Dashboard = () => {
-  return (
-    <div>dashboard</div>
-  );
-};
-
 const App = () => {
   return (
     <div className="App">
@@ -28,11 +34,13 @@ const App = () => {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route element={<RequireAuth />}>
+          <Route element={<Layout />}>
             <Route path="" element={<Dashboard />} />
             <Route path="/">
               <Route path="dashboard" element={<Dashboard />} />
               {/* <Route path="details" element={<Details />} /> */}
             </Route>
+          </Route>
         </Route>
         <Route path="*" element={<>Nothing here yet!</>} />
       </Routes>
