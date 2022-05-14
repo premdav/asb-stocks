@@ -30,8 +30,6 @@ const DashboardTable = ({ stocks, favoriteStocks }: { stocks: Stock[], favoriteS
   const dispatch = useAppDispatch();
   const { openDialog } = useDialogContext();
   const navigate = useNavigate();
-  console.log('stocks', stocks);
-  console.log('favs', favoriteStocks);
   return (
 
       <TableContainer className='content'>
@@ -61,7 +59,10 @@ const DashboardTable = ({ stocks, favoriteStocks }: { stocks: Stock[], favoriteS
                   <TableCell>{stock.symbol}</TableCell>
                   <TableCell>{stock.companyName}</TableCell>
                   <TableCell>
-                    <Button onClick={() => console.log('detail', stock.id)}>View Details</Button>
+                    <Button onClick={() => {
+                      dispatch(stockInfoActions.setDetailStock(stock));
+                      navigate('/details')
+                    }}>View Details</Button>
                   </TableCell>
                 </TableRow>
               ))

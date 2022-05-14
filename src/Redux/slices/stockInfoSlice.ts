@@ -19,8 +19,6 @@ export const stockInfo = createSlice({
       state.favorites = [...state.favorites, action.payload];
     },
     removeFavorite: (state, action: PayloadAction<Stock>) => {
-      console.log('state', state.favorites);
-      console.log('incoming', action.payload);
       state.favorites = state.favorites.filter((fav) => fav.id !== action.payload.id);
     },
     setDetailStock: (state, action: PayloadAction<Stock | null>) => {
