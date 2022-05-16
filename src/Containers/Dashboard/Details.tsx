@@ -15,7 +15,7 @@ const Details = () => {
 
   return (
     <>
-    { tenday && <>
+    { tenday && detailStock && <>
         <Box className='content'>
           <div className='detail-header'>
             <div className='detail-header-content'>
@@ -37,7 +37,24 @@ const Details = () => {
           </div>
           <DetailTable tenday={tenday} />
         </Box>
-    </>}
+      </>
+    }
+    {
+      !tenday || !detailStock ? (
+        <div className='content'>
+          <Button
+            className='content'
+            style={{ color: 'black', border: '1px solid black'}}
+            onClick={() => {
+              navigate('/dashboard');
+              dispatch(stockInfoActions.setDetailStock(null));
+            }}
+          >
+            Return to Dashboard
+          </Button>
+        </div>
+      ) : null
+    }
     </>
   );
 };
