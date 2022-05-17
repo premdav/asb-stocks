@@ -3,6 +3,7 @@ import { persistReducer,
   PURGE, REGISTER, REHYDRATE, FLUSH, PAUSE, PERSIST,
 } from 'redux-persist';
 import storageSession from 'redux-persist/lib/storage/session';
+import { api } from './api';
 import rootReducer from './reducers';
 
 // Using redux-persist to save state to sessionStorage
@@ -20,7 +21,7 @@ export const setupStore: any = (preloadedState?: PreloadedState<RootState>) => {
         serializableCheck: {
           ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
         },
-      }),
+      }).concat(api.middleware),
     preloadedState: preloadedState,
   });
 };

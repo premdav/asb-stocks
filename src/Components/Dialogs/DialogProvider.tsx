@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { DialogContext } from './dialogContext';
 
 export interface UseDialogHookReturn {
-  dialogType: 'unfavorite' | '',
+  dialogType: 'unfavorite' | 'addStock' | 'deleteStock' | '',
   openDialog: (d: UseDialogHookReturn['dialogType']) => void, 
   closeDialog: () => void,
 }

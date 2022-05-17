@@ -5,7 +5,7 @@ import {
 } from '@mui/material';
 import { useAppDispatch } from '../../Redux/hooks';
 import { Stock } from '../../Types/AppTypes';
-import { Favorite, FavoriteBorder } from '@mui/icons-material';
+import { Favorite, FavoriteBorder, Delete } from '@mui/icons-material';
 import { stockInfoActions } from '../../Redux/slices/stockInfoSlice';
 import { useDialogContext } from '../../Components/Dialogs/dialogContext';
 import { useNavigate } from 'react-router-dom';
@@ -55,6 +55,12 @@ const DashboardTable = ({ stocks, favoriteStocks }: { stocks: Stock[], favoriteS
                       dispatch(stockInfoActions.setDetailStock(stock));
                       openDialog('unfavorite');
                       }} />
+                    <Delete
+                      onClick={() => {
+                        dispatch(stockInfoActions.setDetailStock(stock));
+                        openDialog('deleteStock');
+                      }}
+                    />
                   </TableCell>
                   <TableCell>{stock.symbol}</TableCell>
                   <TableCell>{stock.companyName}</TableCell>
@@ -74,6 +80,12 @@ const DashboardTable = ({ stocks, favoriteStocks }: { stocks: Stock[], favoriteS
                 <TableRow key={stock.id} hover>
                   <TableCell>
                     <FavoriteBorder onClick={() => dispatch(stockInfoActions.addFavorite(stock))} />
+                    <Delete
+                      onClick={() => {
+                        dispatch(stockInfoActions.setDetailStock(stock));
+                        openDialog('deleteStock');
+                      }}
+                    />
                   </TableCell>
                   <TableCell>{stock.symbol}</TableCell>
                   <TableCell>{stock.companyName}</TableCell>
